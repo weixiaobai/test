@@ -1,57 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
+<html>
+  <head>
     <meta charset="utf-8">
-    <title>hello world!</title>
-    <script src="./js/jquery/v2.2.3/jquery-2.2.3.min.js?v=fa4d89a"></script>
-    <script type="text/javascript">
-    function isLogin(cbFn) {
-        $.ajax({
-            url: "/apis/usersv2.ashx",
-            type: "GET",
-            dataType: "json",
-            data: {
-                "method": "H5GetAccessTokenJson",
-                "appId": 101,
-                "sign": "v"
-            },
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function(result) {
-                if (result.Status == 1 && result.Data && result.Data.IsLogin) {
-                    typeof cbFn == "function" ? cbFn({
-                        "State": 1,
-                        "Error": "success!"
-                    }) : "";
-                } else {
-                    typeof cbFn == "function" ? cbFn({
-                        "State": 0,
-                        "Error": "请登录。"
-                    }) : "";
-                }
-            },
-            error: function() {
-                typeof cbFn == "function" ? cbFn({
-                    "State": 0,
-                    "Error": "error!"
-                }) : "";
-            }
-        });
-    }
-    isLogin(function() {
-        if (this.State == 1) {
-            alert("ok")
-        } else {
-            alert(this.Error);
-        }
-    });
-    </script>
-</head>
-
-<body>
-    <h1></h1>
-</body>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>bm2018</title>
+    <link rel="stylesheet" type="text/css" href="./static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/iconfont.css">
+  </head>
+  <body style="background:url(./static/img/test_01.jpg) no-repeat; left top;">
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>

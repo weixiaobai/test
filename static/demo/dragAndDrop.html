@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>拖放</title>
+    <style type="text/css">
+	    #div1, #div2,#div3,#div4, #div5,#div6 {
+	        width: 198px;
+	        min-height: 66px;
+	        margin: 10px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+	    }
+	    .box{width:200px; border:1px solid red;;overflow:hidden;}
+	    .fr{float: right;}
+	    .fl{float: left;}
+        .box .item{background:#f5f5f5;width: 100px;min-height: 40px; line-height: 40px;border:1px solid #555;text-align: center;margin:10px;}
+    </style>
+    <script src="../js/jquery/v2.2.3/jquery-2.2.3.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="../js/Sortable/Sortable.js" type="text/javascript" charset="utf-8" ></script>
+    <script type="text/javascript">
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    function drag(ev) {
+        ev.dataTransfer.setData("Text", ev.target.id);
+
+    }
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("Text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+//    $(document).mousemove(function(ev) {
+//    	var xx = ev.originalEvent.x || ev.originalEvent.layerX || 0;
+//        var yy = ev.originalEvent.y || ev.originalEvent.layerY || 0;
+//        $('#js_text').text(xx + '---' + yy);
+//    });
+	function getScrollTop() {  
+	        var scrollPos;  
+	        if (window.pageYOffset) {  
+	        scrollPos = window.pageYOffset; }  
+	        else if (document.compatMode && document.compatMode != 'BackCompat')  
+	        { scrollPos = document.documentElement.scrollTop; }  
+	        else if (document.body) { scrollPos = document.body.scrollTop; }   
+	        alert(scrollPos);
+	} 
+
+    </script>
+</head>
+<body>
+    <div class="box fl" style="display: none;">
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <p style="width:100px;" draggable="true" ondragstart="drag(event)" id="drag1" >aaaaaaaaaa</p>
+        </div>
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="box " id="js_box">
+        <div class="item" id="js_01">item01 
+            <div class="item" id="js_06">item02</div>
+            <div class="item" id="js_07">item03</div>
+        </div>
+        <div class="item" id="js_02">item02</div>
+        <div class="item" id="js_03">item03</div>
+        <div class="item" id="js_04">item04</div>
+        <div class="item" id="js_05">item05</div>
+        <p>aaaa</p>
+    </div>
+    <div class="box fl" id="js_box1">
+        <div >
+            <div id="js_p">
+                aaaaaaaaaaaa
+                <div>
+                    bbbbbbbbbbbb
+                </div>
+            </div>box1
+        </div>
+    </div>
+
+    <div class="box fl" >
+        <div class="box fl"  id="js_box2" style="padding-top:80px;">
+            
+        </div>
+        <div style="display:block;height: 80px;margin:0px;background: red;"><li>aaaaaaaaaaa</li></div>
+
+    </div>
+    <div class="box fl" id="js_box3">box3</div>
+    <div class="box fr" style="position: fixed;top: 10px;right:10px;">
+    	<input type="button" value="高度" onclick="alert($(document).scrollTop())">
+    	<input type="button" value="高度--" onclick="$(document).scrollTop($(document).scrollTop()-10)">
+    	<p id="js_text">
+    		
+    	</p>
+    </div>
+</body>
+<script type="text/javascript">
+    var el = document.getElementById('js_box');
+    Sortable.create(document.getElementById('js_box'), { group: "omega" ,draggable: ".item"});
+    Sortable.create(document.getElementById('js_box1'), { group: "omega" });
+    Sortable.create(document.getElementById('js_p'), { group: "omega" ,disabled:true});
+    Sortable.create(document.getElementById('js_box2'), { group: "omega" });
+    Sortable.create(document.getElementById('js_box3'), { group: "omega" });
+
+</script>
+</html>
