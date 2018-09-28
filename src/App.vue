@@ -1,77 +1,80 @@
 <template>
-    <div class="main">
-        <draggable id="list1" :list="list1" class="dragArea" :options="{group:{name:'people', pull:'clone', put:false }}" @change="log">
-            <div class="item1" v-for="(element, index) in list1" :key="index">
-                {{element.name}} {{index}}
-            </div>
-        </draggable>
-        <h2>List 2 v-dragable-for</h2>
-        <draggable id="list2" :list="list2" class="dragArea" :options="{group:'people'}" @change="log">
-            <div class="item2" v-for="(element, index)  in list2" :key="index">{{element.name}}</div>
-        </draggable>
-        <h2>List 3 v-dragable-for</h2>
-        <draggable id="list3" :list="list3" class="dragArea" :options="{group:'people'}" @change="log">
-            <div class="item2" v-for="(element, index)  in list2" :key="index">{{element.name}}</div>
-        </draggable>
-    </div>
-</template>
-<script>
-import draggable from 'vuedraggable'
-export default {
-    data() {
-        return{
-            list1: [{ name: "二", id: 1 },
-                { name: "热水", id: 2 },
-                { name: "让他", id: 3 },
-                { name: "维恩", id: 4 }
-            ],
-            list2: [{ name: "Juan", id: 5 },
-                { name: "Edgard", id: 6 },
-                { name: "Johnson", id: 7 }
-            ],
-            list3: [{ name: "阿斯达", id: 8 },
-                { name: "还是", id: 9 },
-                { name: "水电费", id: 10 }
-            ]
-        }
-    },
-    methods: {
-        add: function() {
-            this.list.push({ name: 'aaaaa' });
-        },
-        replace: function() {
-            this.list = [{ name: 'BBBBBB' }]
-        },
-        clone: function(el) {
-            return {
-                name: el.name + ' cloned'
-            }
-        },
-        log: function(evt) {
-            console.log(evt)
-        }
-    },
-    components:{
-      draggable
-    }
+  <div id="app">
+    <el-container class="height100">
+        <v-lefter></v-lefter>
+        <el-main>
+          <!--打开的窗口-->
+          <div>
 
+          </div>
+          <!--打开的窗口 end-->
+          <el-scrollbar class="page-component__scroll" id="js_scroll">
+            <router-view></router-view>
+          </el-scrollbar>
+        </el-main>
+    </el-container>
+  </div>
+</template>
+
+<script>
+import header from './components/common/header'
+import lefter from './components/common/lefter'
+
+export default {
+  name: 'App',
+  data(){
+    return{
+      aaa:'aaaa',
+      items: [
+        {
+          id:1,
+          component:'v-header',
+          data:'1',
+          isshow:false
+        },{
+          id:2,
+          component:'v-lefter',
+          data:'1',
+          isshow:true
+        },{
+          id:3,
+          component:'v-header',
+          data:'1',
+          isshow:false
+        }
+      ]
+    };
+  },
+  methods: {
+    open(name, text){
+       this.items.push({
+        id:'1',//唯一id
+        component: name,//打开模板
+        data:'2',//传递的数据
+        isshow:true,//时候显示
+        onlyone:true//是否唯一
+       })
+    },
+    deletebox(name){
+      this.items.splice(0, 1)
+    },
+    select(){
+
+    }
+  },
+  components:{
+    'v-header':header,
+    'v-lefter':lefter
+  }
 }
+
 </script>
+
 <style>
-.item1 {
-    background: green;
-    color: #fff;
-    margin: 10px;
-    width: 300px;
-    font-size: 18px;
-    line-height: 30px;
-}
-.item2 {
-    background: red;
-    color: #fff;
-    margin: 10px;
-    width: 300px;
-    font-size: 18px;
-    line-height: 30px;
-}
+html,body{height:100%;}
+html,body,div,p,a,img{padding: none;margin:none;}
+#app{height:100%;}
+.btn{background: #ddd;margin-left:10px;}
+.active{background: red;}
+.height100{height:100%;}
 </style>

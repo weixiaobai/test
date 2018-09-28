@@ -28,6 +28,10 @@ export default new Router({
       path: '/header',
       name: 'header',
       component: header
+    },{
+      path: '/v-mode',
+      name: 'v-mode',
+      component: () => import('@/components/v-mode.vue')
     }
   ]
 })
