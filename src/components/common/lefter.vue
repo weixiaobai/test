@@ -30,32 +30,12 @@ export default {
       menus:[
         {
           route: '1',
-          name: '业务办理',
+          name: 'test demo',
           children:[
-            { route: '/class-register', name: '报班'},
-            { route: '/discount-search', name: '优惠重算'},
+            { route: '/V-model', name: 'v-model'},
+            { route: '/jsx', name: 'jsx'},
             { route: '/class-register-success', name: '报班成功'},
             { route: '/test', name: 'test'}
-          ]
-        },{
-          route: '2',
-          name: '班级管理',
-          children:[
-            { route: '/class-search', name: '班级查询'},
-            { route: '/class-student-list', name: '班级花名册'},
-          ]
-        },{
-          route: '3',
-          name: '记录查询',
-          children:[
-            { route: '/order-list', name: '订单记录'},
-            { route: '/order-detail', name: '订单详情'},
-          ]
-        },{
-          route: '4',
-          name: '支付',
-          children:[
-            { route: '/pay', name: '支付模块'},
           ]
         }
       ],

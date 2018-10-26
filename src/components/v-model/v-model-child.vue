@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="v-model-child">
       // 组件使用时有v-model属性，value初始传的‘what’ 不会被渲染，
       而是v-model绑定的test值被渲染，这儿value会被重新赋值为v-model绑定的test的值。
       <input type="text" v-model="model"/>
@@ -38,3 +38,6 @@ export default {
   }
 };
 </script>
+<style>
+.v-model-child{border:1px solid red;}
+</style>

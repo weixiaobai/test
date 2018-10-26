@@ -29,9 +29,13 @@ export default new Router({
       name: 'header',
       component: header
     },{
-      path: '/v-mode',
-      name: 'v-mode',
-      component: () => import('@/components/v-mode.vue')
+      path: '/v-model',
+      name: 'v-model',
+      component: () => import('@/components/v-model/v-model.vue')
+    },{
+      path: '/jsx',
+      name: 'jsx',
+      component: () => import('@/components/jsx/jsx.vue')
     }
   ]
 })
