@@ -7,32 +7,29 @@
             placeholder="选择日期时间" value-format="yyyy-MM-dd HH:mm:ss">
         </el-date-picker>
     </p>
-
     <el-table
-        :data="tableData"
-        style="width: 100%">
-        <el-table-column
-        label="日期"
-        width="180">
-        <template slot-scope="scope">
-            <i class="el-icon-time"></i>
-            <span style="margin-left: 10px">{{ scope.row.date }}</span>
-        </template>
-        </el-table-column>
-        <el-table-column
-        label="姓名"
-        width="180">
-        <template slot-scope="scope">
-            <el-popover trigger="hover" placement="top">
-            <p>姓名: {{ scope.row.name }}</p>
-            <p>住址: {{ scope.row.address }}</p>
-            <div slot="reference" class="name-wrapper">
-                <el-tag size="medium">{{ scope.row.name }}</el-tag>
-            </div>
-            </el-popover>
-        </template>
-        </el-table-column>
-        <el-table-column  :render-header="(h,obj)=>renderHeader(h,obj)">
+    :data="tableData" @sort-change="show"
+    style="width: 100%"
+    :default-sort = "{prop: 'date', order: 'descending'}"
+    >
+    <el-table-column
+      prop="date"
+      label="日期"
+      sortable
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      sortable='custom'
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="地址"
+      >
+    </el-table-column>
+    <el-table-column lable="sss" sortable  :render-header="(h,obj)=>renderHeader(h,obj)">
         <template slot-scope="scope">
             <el-button
             size="mini"
@@ -43,7 +40,8 @@
             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
         </el-table-column>
-    </el-table>
+  </el-table>
+
   </div>
 </template>
 
@@ -59,17 +57,17 @@ export default {
         },
         {
           date: "2016-05-04",
-          name: "王小虎",
+          name: "王小1虎",
           address: "上海市普陀区金沙江路 1517 弄"
         },
         {
           date: "2016-05-01",
-          name: "王小虎",
+          name: "王小5虎",
           address: "上海市普陀区金沙江路 1519 弄"
         },
         {
           date: "2016-05-03",
-          name: "王小虎",
+          name: "王小4虎",
           address: "上海市普陀区金沙江路 1516 弄"
         }
       ],
@@ -108,13 +106,35 @@ export default {
       var that = this;
       return (
         <div>
+          <el-popover
+            placement="top-start"
+            title="标题"
+            width="200"
+            trigger="click"
+            content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+          >
             <el-date-picker
-                v-model={this.aaa}
-                type="datetime"
-                placeholder="选择日期时间" value-format="yyyy-MM-dd HH:mm:ss">
-            </el-date-picker>
+              onchange="this.show"
+              v-model={this.aaa}
+              type="datetime"
+              placeholder="选择日期时间"
+              value-format="yyyy-MM-dd HH:mm:ss"
+            />
+            <i
+              slot="reference"
+              class="el-icon-date"
+              onclick="event.stopPropagation();"
+            />
+          </el-popover>
         </div>
       );
+    },
+    show:function({ column, prop, order }) {
+      console.log(column);
+      console.log(prop+order);
+    },
+    show2:function(){
+      alert("aaa")
     }
   }
 };
