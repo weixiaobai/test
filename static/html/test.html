@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <script type="text/javascript">
+var ws = new WebSocket("ws://10.202.203.208:8080/JavaWebSocket/websocket");
+ws.onopen = function(evt) { 
+  console.log("Connection open ..."); 
+  ws.send("{Hello WebSockets!}");
+};
+
+ws.onmessage = function(evt) {
+  console.log( "Received Message: " + evt.data);
+ // ws.close();
+};
+
+ws.onclose = function(evt) {
+  console.log("Connection closed.");
+};  
+    </script>
+</head>
+<body>
+    <div id="sse">
+        <a href="javascript:ws.send('{222}');">运行 WebSocket</a>
+    </div>
+</body>
+</html>
