@@ -29,7 +29,7 @@
       label="地址"
       >
     </el-table-column>
-    <el-table-column lable="sss" sortable  :render-header="(h,obj)=>renderHeader(h,obj)">
+    <el-table-column lable="sss"   :render-header="(h,obj)=>renderHeader(h,obj)">
         <template slot-scope="scope">
             <el-button
             size="mini"
@@ -126,6 +126,7 @@ export default {
               onclick="event.stopPropagation();"
             />
           </el-popover>
+          <a onClick={()=>this.show2}>aaa</a>
         </div>
       );
     },

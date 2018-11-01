@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
 import test from '@/components/test'
-import table from '@/components/table'
 import header from '@/components/common/header'
 
 Vue.use(Router)
@@ -20,11 +19,6 @@ export default new Router({
       component: test
     },
     {
-      path: '/table',
-      name: 'table',
-      component: table
-    },
-    {
       path: '/header',
       name: 'header',
       component: header
@@ -36,6 +30,10 @@ export default new Router({
       path: '/jsx',
       name: 'jsx',
       component: () => import('@/components/jsx/jsx.vue')
+    },{
+      path: '/table',
+      name: 'table',
+      component: () => import('@/components/table/table-index.vue')
     }
   ]
 })

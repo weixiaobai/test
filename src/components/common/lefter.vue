@@ -34,7 +34,7 @@ export default {
           children:[
             { route: '/V-model', name: 'v-model'},
             { route: '/jsx', name: 'jsx'},
-            { route: '/class-register-success', name: '报班成功'},
+            { route: '/table', name: 'table'},
             { route: '/test', name: 'test'}
           ]
         }
