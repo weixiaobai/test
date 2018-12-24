@@ -6,7 +6,6 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router.js'
 
-Vue.config.productionTip = false
 Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
@@ -14,13 +13,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
-const aComponent = Vue.extend({
-  props: ['text'],
-  template: '<li>A Component: {{ text }}</li>'
-})
-
-const bComponent = Vue.extend({
-  props: ['text'],
-  template: '<li>B Component: {{ text }}</li>'
 })
