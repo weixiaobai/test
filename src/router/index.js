@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
 import test from '@/components/test'
-import table from '@/components/table'
+import table from '@/components/table/table-index'
 import header from '@/components/common/header'
 
 Vue.use(Router)
